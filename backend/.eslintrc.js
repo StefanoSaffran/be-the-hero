@@ -22,7 +22,7 @@ module.exports = {
       "error",
       "single"
     ], */
-		"newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
+		"newline-per-chained-call": ["error", { "ignoreChainWithDepth": 3 }],
     "semi": 0,
     "eqeqeq": "error",
     "no-trailing-spaces": "error",
