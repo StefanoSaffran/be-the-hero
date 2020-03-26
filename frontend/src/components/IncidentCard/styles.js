@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.li`
-  background: #fff;
+  background: ${({ theme }) => theme.colors.CardBackground};
   padding: 24px;
   border-radius: 8px;
   position: relative;
@@ -10,7 +10,7 @@ export const Container = styled.li`
   strong {
     display: block;
     margin-bottom: 16px;
-    color: #41414d;
+    color: ${({ theme }) => theme.colors.textStrong};
   }
 
   p + strong {
@@ -18,7 +18,7 @@ export const Container = styled.li`
   }
 
   p {
-    color: #737380;
+    color: ${({ theme }) => theme.colors.text};
     font-size: 16px;
     line-height: 21px;
   }

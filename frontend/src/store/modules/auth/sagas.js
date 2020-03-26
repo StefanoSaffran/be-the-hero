@@ -52,7 +52,7 @@ export function setId({ payload }) {
 
   const { profile } = payload?.ong;
 
-  if (profile.id) {
+  if (profile?.id) {
     api.defaults.headers.Authorization = profile.id;
   }
 }

@@ -20,6 +20,9 @@ export const Content = styled.div`
   align-items: center;
   border-radius: 8px;
 
+  background: ${({ theme }) =>
+    theme.title === 'dark' && theme.colors.CardBackground};
+
   box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.1);
 
   section {
@@ -29,12 +32,13 @@ export const Content = styled.div`
     h1 {
       margin: 64px 0 32px;
       font-size: 32px;
+      color: ${({ theme }) => theme.colors.title};
     }
 
     p {
       font-size: 18px;
       line-height: 32px;
-      color: #737380;
+      color: ${({ theme }) => theme.colors.text};
     }
   }
 `;

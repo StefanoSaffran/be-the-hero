@@ -6,7 +6,7 @@ import colors from '~/styles/colors';
 export const StyledButton = styled.button`
   width: 100%;
   height: 60px;
-  background: ${colors.primary};
+  background: ${({ theme }) => theme.colors.primary};
   border: 0;
   border-radius: 8px;
   font-weight: bold;

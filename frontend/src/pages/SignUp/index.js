@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { ThemeContext } from 'styled-components';
 
 import { FiArrowLeft } from 'react-icons/fi';
 
@@ -11,10 +12,12 @@ import Button from '~/components/Button';
 import { signUpRequest } from '~/store/modules/auth/actions';
 
 import logo from '~/assets/logo.svg';
+import logoDark from '~/assets/logo-dark.svg';
 
 import { Container, Content, Form } from './styles';
 
 export default function SignIn() {
+  const { title } = useContext(ThemeContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
@@ -32,7 +35,7 @@ export default function SignIn() {
     <Container>
       <Content>
         <section>
-          <img src={logo} alt="Heroes" />
+          <img src={title === 'light' ? logo : logoDark} alt="Heroes" />
           <h1>Cadastro</h1>
           <p>
             Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem
@@ -48,6 +51,7 @@ export default function SignIn() {
             id="ngo"
             name="ngo"
             placeholder="Nome da ONG"
+            required
             value={name}
             onChange={({ target }) => setName(target.value)}
           />
@@ -55,6 +59,7 @@ export default function SignIn() {
             id="email"
             name="email"
             placeholder="E-mail"
+            required
             value={email}
             onChange={({ target }) => setEmail(target.value)}
           />
@@ -62,6 +67,7 @@ export default function SignIn() {
             id="whatsapp"
             name="whatsapp"
             placeholder="WhatsApp"
+            required
             value={whatsapp}
             onChange={({ target }) => setWhatsapp(target.value)}
           />
@@ -70,6 +76,7 @@ export default function SignIn() {
               id="city"
               name="city"
               placeholder="Cidade"
+              required
               value={city}
               onChange={({ target }) => setCity(target.value)}
             />
@@ -77,6 +84,7 @@ export default function SignIn() {
               id="uf"
               name="uf"
               placeholder="UF"
+              required
               value={uf}
               onChange={({ target }) => setUf(target.value)}
             />

@@ -11,7 +11,7 @@ export const Container = styled.div`
   h1#incidentsListTitle {
     font-weight: 500;
     margin: 80px 0 24px;
-    color: #13131a;
+    color: ${({ theme }) => theme.colors.title};
   }
 `;
 
@@ -22,16 +22,21 @@ export const Header = styled.header`
   span {
     font-size: 20px;
     margin-left: 24px;
+    color: ${({ theme }) => theme.title === 'dark' && theme.colors.textStrong};
   }
 
   img {
     height: 64px;
   }
 
-  button#newIncident {
+  span + div {
     margin-left: auto;
+  }
+
+  button#newIncident {
     width: 260px;
     margin-top: 0;
+    margin-left: 24px;
   }
 
   button#logout {

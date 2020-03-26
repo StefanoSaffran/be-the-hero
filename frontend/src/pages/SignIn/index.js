@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { ThemeContext } from 'styled-components';
 
 import { FiLogIn } from 'react-icons/fi';
 
@@ -12,10 +13,12 @@ import { signInRequest } from '~/store/modules/auth/actions';
 
 import heroesImg from '~/assets/heroes.png';
 import logo from '~/assets/logo.svg';
+import logoDark from '~/assets/logo-dark.svg';
 
 import { Container, Form } from './styles';
 
 export default function SignIn() {
+  const { colors, title } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const loading = useSelector(state => state.auth.loading);
   const [id, setId] = useState('');
@@ -28,10 +31,11 @@ export default function SignIn() {
   return (
     <Container>
       <section className="form">
-        <img src={logo} alt="Heroes" />
+        <img src={title === 'light' ? logo : logoDark} alt="Heroes" />
         <Form onSubmit={handleSubmit}>
           <h1>Faça seu logon</h1>
           <Input
+            autocomplete="off"
             id="id"
             name="id"
             placeholder="Sua ID"

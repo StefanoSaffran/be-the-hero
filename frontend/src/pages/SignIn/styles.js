@@ -21,4 +21,8 @@ export const Container = styled.div`
 
 export const Form = styled.form`
   margin-top: 100px;
+
+  h1 {
+    color: ${({ theme }) => theme.colors.title ?? 'black'};
+  }
 `;
