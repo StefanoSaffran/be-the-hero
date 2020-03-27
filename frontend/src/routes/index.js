@@ -5,7 +5,7 @@ import Route from './Route';
 import SignIn from '~/pages/SignIn';
 import SignUp from '~/pages/SignUp';
 import Profile from '~/pages/Profile';
-import NewIncident from '~/pages/NewIncident';
+import ManageIncident from '~/pages/ManageIncident';
 
 const Routes = () => {
   return (
@@ -14,7 +14,8 @@ const Routes = () => {
       <Route path="/register" component={SignUp} />
 
       <Route path="/profile" component={Profile} isPrivate />
-      <Route path="/incidents/new" component={NewIncident} isPrivate />
+      <Route path="/incidents/new" component={ManageIncident} isPrivate />
+      <Route path="/incidents/edit/:id" component={ManageIncident} isPrivate />
     </Switch>
   );
 };
