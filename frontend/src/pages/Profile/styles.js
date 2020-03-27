@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
+import { darken, shade } from 'polished';
 
 export const Container = styled.div`
   height: 100vh;
@@ -29,8 +29,16 @@ export const Header = styled.header`
     height: 64px;
   }
 
-  span + div {
+  span + div.toggle {
     margin-left: auto;
+  }
+
+  div.toggle.react-toggle--checked .react-toggle-track {
+    background: #4d4d4d;
+  }
+
+  div.react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
+    background: ${shade(0.5, '#4d4d4d')};
   }
 
   button#newIncident {
@@ -47,13 +55,26 @@ export const Header = styled.header`
     box-sizing: border-box;
     border-radius: 8px;
     background: transparent;
-    /* transform: matrix(1, 0, 0, -1, 0, 0); */
 
     transition: border-color 0.2s;
 
     &:hover {
-      border-color: ${darken(0.2, `#dcdce6`)};
+      border-color: ${({ theme }) =>
+        theme.title === 'light' ? `${darken(0.2, '#dcdce6')}` : '#e02041'};
     }
+  }
+`;
+
+export const Empty = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 450px;
+
+  h1 {
+    color: ${({ theme }) => theme.colors.title};
+    margin-bottom: 25px;
   }
 `;
 
