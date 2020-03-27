@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeContext } from 'styled-components';
+import * as Yup from 'yup';
 
 import { FiArrowLeft } from 'react-icons/fi';
 
@@ -14,21 +15,48 @@ import { signUpRequest } from '~/store/modules/auth/actions';
 import logo from '~/assets/logo.svg';
 import logoDark from '~/assets/logo-dark.svg';
 
-import { Container, Content, Form } from './styles';
+import { Container, Content, Unform } from './styles';
 
 export default function SignIn() {
+  const formRef = useRef(null);
   const { title } = useContext(ThemeContext);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [whatsapp, setWhatsapp] = useState('');
-  const [city, setCity] = useState('');
-  const [uf, setUf] = useState('');
   const dispatch = useDispatch();
   const loading = useSelector(state => state.auth.loading);
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    dispatch(signUpRequest(name, email, whatsapp, city, uf));
+  const handleSubmit = async data => {
+    formRef.current.setErrors({});
+
+    try {
+      const schema = Yup.object().shape({
+        name: Yup.string().required('O nome da ong é obrigatório.'),
+        email: Yup.string()
+          .email()
+          .required('O e-mail é obrigatório.'),
+        whatsapp: Yup.string()
+          .max(13, 'Maximo de 13 números')
+          .required('O campo whatsapp é obrigatório.'),
+        city: Yup.string().required('A cidade é obrigatória.'),
+        uf: Yup.string()
+          .matches(/[A-Za-z]{2}/, 'UF inválido')
+          .required('A campo UF é obrigatória.'),
+      });
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      const { name, email, whatsapp, city, uf } = data;
+      dispatch(signUpRequest(name, email, whatsapp, city, uf));
+    } catch (err) {
+      const validationErrors = {};
+
+      if (err instanceof Yup.ValidationError) {
+        err.inner.forEach(error => {
+          validationErrors[error.path] = error.message;
+        });
+        formRef.current.setErrors(validationErrors);
+      }
+    }
   };
 
   return (
@@ -46,51 +74,16 @@ export default function SignIn() {
             Voltar para o logon
           </Link>
         </section>
-        <Form onSubmit={handleSubmit}>
-          <Input
-            id="ngo"
-            name="ngo"
-            placeholder="Nome da ONG"
-            required
-            value={name}
-            onChange={({ target }) => setName(target.value)}
-          />
-          <Input
-            id="email"
-            name="email"
-            placeholder="E-mail"
-            required
-            value={email}
-            onChange={({ target }) => setEmail(target.value)}
-          />
-          <Input
-            id="whatsapp"
-            name="whatsapp"
-            placeholder="WhatsApp"
-            required
-            value={whatsapp}
-            onChange={({ target }) => setWhatsapp(target.value)}
-          />
+        <Unform onSubmit={handleSubmit} ref={formRef}>
+          <Input id="ngo" name="name" placeholder="Nome da ONG" />
+          <Input id="email" name="email" placeholder="E-mail" />
+          <Input id="whatsapp" name="whatsapp" placeholder="WhatsApp com DDD" />
           <div className="input-group">
-            <Input
-              id="city"
-              name="city"
-              placeholder="Cidade"
-              required
-              value={city}
-              onChange={({ target }) => setCity(target.value)}
-            />
-            <Input
-              id="uf"
-              name="uf"
-              placeholder="UF"
-              required
-              value={uf}
-              onChange={({ target }) => setUf(target.value)}
-            />
+            <Input id="city" name="city" placeholder="Cidade" />
+            <Input id="uf" name="uf" placeholder="UF" />
           </div>
           <Button type="submit">{loading ? <Loading /> : 'Cadastrar'}</Button>
-        </Form>
+        </Unform>
       </Content>
     </Container>
   );

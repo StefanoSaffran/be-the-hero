@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form } from '@unform/web';
 
 export const Container = styled.div`
   height: 100vh;
@@ -43,7 +44,7 @@ export const Content = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const Unform = styled(Form)`
   width: 100%;
   max-width: 450px;
 
@@ -54,9 +55,14 @@ export const Form = styled.form`
   div.input-group {
     display: flex;
 
-    input:last-child {
+    input#city {
+      width: 362px;
+    }
+
+    input#uf {
       width: 80px;
       margin-left: 8px;
+      align-self: flex-end;
     }
   }
 `;

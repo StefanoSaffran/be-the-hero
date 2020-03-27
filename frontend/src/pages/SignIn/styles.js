@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
-import colors from '~/styles/colors';
+import { Form } from '@unform/web';
 
 export const Container = styled.div`
   height: 100vh;
@@ -19,7 +18,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const Unform = styled(Form)`
   margin-top: 100px;
 
   h1 {
