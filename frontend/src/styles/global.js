@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-activity/dist/react-activity.css';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import 'react-toggle/style.css';
 
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
@@ -79,5 +80,16 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-10%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
 `;
