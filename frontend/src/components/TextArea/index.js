@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import { useField } from '@unform/core';
 
-import { Container, TInput } from './styles';
+import { Container, UnformTextArea } from './styles';
 
-export default function Input({ name, label, ...rest }) {
+export default function TextArea({ name, label, ...rest }) {
   const inputRef = useRef(null);
   const { fieldName, defaultValue, registerField, error } = useField(name);
 
@@ -16,8 +16,8 @@ export default function Input({ name, label, ...rest }) {
   }, [fieldName, registerField]);
 
   return (
-    <Container id="unformInput">
-      <TInput
+    <Container id="unformTextArea">
+      <UnformTextArea
         id={fieldName}
         ref={inputRef}
         defaultValue={defaultValue}

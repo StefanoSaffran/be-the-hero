@@ -2,17 +2,6 @@ import styled from 'styled-components';
 
 import colors from '~/styles/colors';
 
-export const TInput = styled.input`
-  width: 100%;
-  height: 66px;
-  color: ${({ theme }) => theme.colors.textStrong};
-  padding: 0 24px;
-  margin-top: 32px;
-  border-radius: 8px;
-  border: 1px solid ${colors.border};
-  background: ${({ theme }) => theme.colors.CardBackground};
-`;
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -25,4 +14,17 @@ export const Container = styled.div`
     animation: 300ms ease-out 0s 1 slideInFromLeft;
     word-wrap: break-word;
   }
+`;
+
+export const UnformTextArea = styled.textarea`
+  width: 100%;
+  min-height: 150px;
+  color: ${({ theme }) => theme.colors.textStrong};
+  border: 1px solid #dcdce6;
+  border-radius: 8px;
+  padding: 16px 24px;
+  line-height: 24px;
+  margin-top: 8px;
+  resize: vertical;
+  background: ${({ theme }) => theme.colors.CardBackground};
 `;
