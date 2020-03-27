@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form } from '@unform/web';
 
 export const Container = styled.div`
   height: 100vh;
@@ -42,24 +43,11 @@ export const Content = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const Unform = styled(Form)`
   width: 100%;
   max-width: 450px;
 
   input {
     margin-top: 8px;
   }
-`;
-
-export const TextArea = styled.textarea`
-  width: 100%;
-  min-height: 150px;
-  color: ${({ theme }) => theme.colors.textStrong};
-  border: 1px solid #dcdce6;
-  border-radius: 8px;
-  padding: 16px 24px;
-  line-height: 24px;
-  margin-top: 8px;
-  resize: vertical;
-  background: ${({ theme }) => theme.colors.CardBackground};
 `;
