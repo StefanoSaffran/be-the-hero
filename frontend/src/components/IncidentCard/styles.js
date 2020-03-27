@@ -23,7 +23,7 @@ export const Container = styled.li`
     line-height: 21px;
   }
 
-  button {
+  button.delete {
     position: absolute;
     right: 24px;
     top: 24px;
@@ -31,7 +31,28 @@ export const Container = styled.li`
     background: transparent;
 
     &:hover {
-      opacity: 0.8;
+      opacity: ${({ theme }) => theme.title === 'light' && 0.8};
+    }
+    svg {
+      &:hover {
+        color: ${({ theme }) => theme.title === 'dark' && '#e02041'} !important;
+      }
+    }
+  }
+  button.edit {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    border: 0;
+    background: transparent;
+
+    &:hover {
+      opacity: ${({ theme }) => theme.title === 'light' && 0.8};
+    }
+    svg {
+      &:hover {
+        color: ${({ theme }) => theme.title === 'dark' && '#e02041'} !important;
+      }
     }
   }
 `;
