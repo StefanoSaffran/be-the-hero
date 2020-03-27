@@ -23,8 +23,13 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "userInterfaceStyle": "automatic",
     "ios": {
+      "userInterfaceStyle": "dark",
       "supportsTablet": true
+    },
+    "android": {
+      "userInterfaceStyle": "dark"
     }
   }
 }

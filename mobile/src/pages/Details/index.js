@@ -5,8 +5,6 @@ import * as MailComposer from 'expo-mail-composer';
 
 import { Feather as Icon } from '@expo/vector-icons';
 
-import api from '~/services/api';
-
 import logo from '~/assets/logo.png';
 
 import {

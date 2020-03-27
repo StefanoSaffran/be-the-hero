@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
+import { ThemeContext } from 'styled-components';
 import { showMessage } from 'react-native-flash-message';
 
 import api from '~/services/api';
+import Context from '~/themes/context';
 
 import logo from '~/assets/logo.png';
 import IncidentCard from '~/components/IncidentCard';
@@ -16,9 +18,14 @@ import {
   Welcome,
   Description,
   IncidentList,
+  ToggleThemeButton,
+  ThemeIcon,
+  Right,
 } from './styles';
 
 export default function Incidents() {
+  const { title } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(Context);
   const [incidents, setIncidents] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
@@ -75,9 +82,14 @@ export default function Incidents() {
     <Container>
       <Header>
         <Image source={logo} />
-        <TotalIncidents>
-          Total de <Strong>{total} casos</Strong>
-        </TotalIncidents>
+        <Right>
+          <TotalIncidents>
+            Total de <Strong>{total} casos</Strong>
+          </TotalIncidents>
+          <ToggleThemeButton onPress={toggleTheme}>
+            <ThemeIcon name={title === 'light' ? 'sun' : 'moon'} />
+          </ToggleThemeButton>
+        </Right>
       </Header>
 
       <Welcome>Bem-vindo</Welcome>
