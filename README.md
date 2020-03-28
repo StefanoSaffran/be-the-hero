@@ -6,7 +6,7 @@
 </h1>
 
 <h4 align="center">
-  Application that connect people who wants to help with NGOs.
+  Application that connects people who wants to help with NGOs.
 </h4>
 
 <p align="center">
@@ -21,6 +21,10 @@
   <a href="#information_source-how-to-run">How to run</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#page_facing_up-license">Licence</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#mailbox_with_mail-get-in-touch">Get in touch</a>
+</p>
+
+<p align="center">
+  <img src="https://res.cloudinary.com/stefanosaffran/image/upload/v1585399751/Omnistack/mehj7vvtwwnzyxgqc4em.gif" height="400">
 </p>
 
 ## :rocket: Built with
@@ -95,7 +99,7 @@ In order to run the application on your device, you need to change the ip config
 
 [api.js](https://github.com/StefanoSaffran/omnistack-11/blob/master/mobile/src/services/api.js)
 ```javascript
-  baseURL: 'http://192.168.0.185:3333',
+  baseURL: 'http://192.168.0.185:3003',
 ```
 replace 192.168.0.185 with your machine's ip.
 
