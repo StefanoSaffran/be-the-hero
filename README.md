@@ -30,7 +30,7 @@
   Application that connects people who wants to help with NGOs.
 </h4>
 <p align="center">
-  <img src="https://res.cloudinary.com/stefanosaffran/image/upload/v1585399751/Omnistack/mehj7vvtwwnzyxgqc4em.gif" height="400">
+  <img src="https://res.cloudinary.com/stefanosaffran/image/upload/v1585399751/Omnistack/mehj7vvtwwnzyxgqc4em.gif">
 </p>
 
 ## :rocket: Built with
