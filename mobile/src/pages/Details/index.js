@@ -47,7 +47,7 @@ export default function Details() {
   };
 
   const sendWhatsapp = () => {
-    Linking.openURL(`whatsapp://send?phone=17671240345&text=${message}`);
+    Linking.openURL(`whatsapp://send?phone=0000000000&text=${message}`);
   };
 
   return (
